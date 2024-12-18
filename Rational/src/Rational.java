@@ -12,12 +12,15 @@ public class Rational {
     Rational(int n, int d) {
         if(d < 0) {
             d = -d;
+            n = -n;
+            //System.out.println("HI! "+n+" "+d);   //proves that 1 - 6 = 1/x is outputted as -1/5 and not 1/-5
         }
         if(d == 0) {
             new ArithmeticException();
         }
         num = n;
         denom = d;
+        //System.out.println(num+" "+denom+" Hi!");    //proves that 1 - 6 = 1/x is outputted as -1/5 and not 1/-5
     }
     Rational(Rational r) {
         num = r.num;
@@ -42,9 +45,9 @@ public class Rational {
         return "" + getNum();
         return getNum() + "/" + getDenom();
     }
-    public Rational invert(Rational r) {
-        Rational a = new Rational(r.denom, r.num);
-        return(a);
+    public Rational invert() {
+            Rational a = new Rational(this.denom, this.num);
+            return(a);
     }
     public Rational add(Rational r) {
         int top1 = r.denom*this.num;
@@ -52,7 +55,7 @@ public class Rational {
         Rational a = new Rational((top1+top2), (r.denom*this.denom));
         return(a);
     }
-    public Rational subtract(Rational r) {
+    public Rational sub(Rational r) {
         int top1 = r.denom*this.num;
         int top2 = r.num*this.denom;
         Rational a = new Rational((top1-top2), (r.denom*this.denom));
@@ -63,21 +66,22 @@ public class Rational {
         return(a);
     }
     public Rational div(Rational r) {
-        Rational a = invert(r);
+        Rational a = r.invert();
         Rational b = new Rational((this.num*a.num), (this.denom*a.denom));
         return(b);
     }
     public Rational reduce() {
-        int temp = 0;
-        int a = this.num-1;
-        int b = this.denom-1;
-        while(b != 0) {
-            temp /= b;
-            b /= a % b;
-            a /= temp;
+        int temp;
+        int a = this.num;
+        int b = this.denom;
+        temp = a % b;
+        while(temp != 0) {
+            a = b;
+            b = temp;
+            temp = a % b;
         }
-        this.setNum(this.num/a);
-        this.setDenom(this.denom/a);
+        this.setNum(this.num/b);
+        this.setDenom(this.denom/b);
         return this;
     }
 }
