@@ -26,7 +26,7 @@ public class GenComp {
             }
         } else if (args.length == 2) {
             //Acc number and BLZ entered - generate new IBAN
-            /*int iban = 0;
+            int iban = 0;
             for(int i = 4; i < args[0].length(); i++) { //starts at 4 to skip DExx
                 int a = args[0].charAt(i) - '0';
                 iban *= 10;
@@ -39,13 +39,27 @@ public class GenComp {
                 iban += a;
                 iban = iban % 97;
             }
+            //FIX ME
+            //D
             iban = ((iban * 10) + 2) % 97;
             //E
             iban = ((iban * 10) + 7) % 97;
             iban = ((iban * 10)) % 97;
             iban = ((iban * 10)) % 97;
-            int check = iban;*/
-            //sort code - 1st input
+            int check = 98-iban;
+            System.out.println(iban);
+            //output
+            if (check < 10) {
+                System.out.print("DE0"+check+args[0]+args[1]);
+            } else {
+                System.out.print("DE"+check+args[0]+args[1]);
+            }
+        }
+    }
+}
+
+
+/*//sort code - 1st input
             double sort = Double.parseDouble(args[0]);
             //acc nr - 2nd input
             double acc = Double.parseDouble(args[1]);
@@ -66,13 +80,4 @@ public class GenComp {
             ibase += 2700;
             double checksum = 98 - (ibase % 97);
             int check = (int)checksum;
-            
-            //output
-            if (check < 10) {
-                System.out.print("DE0"+check+args[0]+(int)acc);
-            } else {
-                System.out.print("DE"+check+args[0]+(int)acc);
-            }
-        }
-    }
-}
+*/
