@@ -47,6 +47,7 @@ public class ConvertRoman {
             }
             if (a - 5 >= 0) {
                 System.out.print("V");
+                a -= 5;
             }
             if (a - 4 == 0) {
                 System.out.print("IV");
@@ -69,12 +70,16 @@ public class ConvertRoman {
                         result += 500;
                         break;
                     case 'C':
-                        if(args[0].charAt(i+1) == 'M') {
-                            result += 900;
-                            i++;
-                        } else if(args[0].charAt(i+1) == 'D') {
-                            result += 400;
-                            i++;
+                        if(i != args[0].length()-1) {
+                            if(args[0].charAt(i+1) == 'M') {
+                                result += 900;
+                                i++;
+                            } else if(args[0].charAt(i+1) == 'D') {
+                                result += 400;
+                                i++;
+                            } else {
+                                result += 100;
+                            }
                         } else {
                             result += 100;
                         }
@@ -83,12 +88,16 @@ public class ConvertRoman {
                         result += 50;
                         break;
                     case 'X':
-                        if(args[0].charAt(i+1) == 'C') {
-                            result += 90;
-                            i++;
-                        } else if(args[0].charAt(i+1) == 'L') {
-                            result += 40;
-                            i++;
+                    if(i != args[0].length()-1) {
+                            if(args[0].charAt(i+1) == 'C') {
+                                result += 90;
+                                i++;
+                            } else if(args[0].charAt(i+1) == 'L') {
+                                result += 40;
+                                i++;
+                            } else {
+                                result += 10;
+                            }
                         } else {
                             result += 10;
                         }
@@ -97,12 +106,16 @@ public class ConvertRoman {
                         result += 5;
                         break;
                     case 'I':
-                        if(args[0].charAt(i+1) == 'X') {
-                            result += 9;
-                            i++;
-                        } else if(args[0].charAt(i+1) == 'V') {
-                            result += 4;
-                            i++;
+                        if(i != args[0].length()-1) {
+                            if(args[0].charAt(i+1) == 'X') {
+                                result += 9;
+                                i++;
+                            } else if(args[0].charAt(i+1) == 'V') {
+                                result += 4;
+                                i++;
+                            } else {
+                                result += 1;
+                            }
                         } else {
                             result += 1;
                         }

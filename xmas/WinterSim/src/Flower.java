@@ -28,7 +28,7 @@ public class Flower {
     public void printStatus() {
         switch (state) {
             case GROW:
-                System.out.print("is growing, size : "+this.size+"\n");
+                System.out.print("is growing, size: "+this.size+"\n");
                 break;
             case FLOURISH:
                 System.out.print("is flourishing\n");

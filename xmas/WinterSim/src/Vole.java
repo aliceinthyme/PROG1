@@ -1,7 +1,7 @@
 public class Vole {
     public int state = 1;
     final int SLEEP = 1;
-    final int FED_UP = 2; //this does not mean what you think it means
+    final int FED_UP = 2;
     final int HUNGRY = 3;
     final int STARVED = 0;
     Vole() {

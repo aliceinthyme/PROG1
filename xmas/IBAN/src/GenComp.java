@@ -41,18 +41,28 @@ public class GenComp {
             }
             //FIX ME
             //D
-            iban = ((iban * 10) + 2) % 97;
+            iban = ((iban * 10) + 1) % 97;
+            iban = ((iban * 10) + 3) % 97;
             //E
-            iban = ((iban * 10) + 7) % 97;
+            iban = ((iban * 10) + 1) % 97;
+            iban = ((iban * 10) + 4) % 97;
             iban = ((iban * 10)) % 97;
             iban = ((iban * 10)) % 97;
             int check = 98-iban;
             System.out.println(iban);
             //output
             if (check < 10) {
-                System.out.print("DE0"+check+args[0]+args[1]);
+                System.out.print("DE0"+check+args[0]);
+                for(int i = 0; i < 10-args[1].length(); i++) {  //fills in leading zeros
+                    System.out.print("0");
+                }
+                System.out.print(args[1]);
             } else {
-                System.out.print("DE"+check+args[0]+args[1]);
+                System.out.print("DE"+check+args[0]);
+                for(int i = 0; i < 10-args[1].length(); i++) {  //fills in leading zeros
+                    System.out.print("0");
+                }
+                System.out.print(args[1]);
             }
         }
     }
