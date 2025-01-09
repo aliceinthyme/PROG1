@@ -27,29 +27,16 @@ public class GenComp {
         } else if (args.length == 2) {
             //Acc number and BLZ entered - generate new IBAN
             int iban = 0;
-            for(int i = 4; i < args[0].length(); i++) { //starts at 4 to skip DExx
-                int a = args[0].charAt(i) - '0';
+            String proc = args[0]+args[1]+"131400";
+            System.out.println(proc);
+            for(int i = 0; i < proc.length(); i++) {
+                int a = proc.charAt(i) - '0';
                 iban *= 10;
                 iban += a;
                 iban = iban % 97;
             }
-            for(int i = 4; i < args[1].length(); i++) { //starts at 4 to skip DExx
-                int a = args[1].charAt(i) - '0';
-                iban *= 10;
-                iban += a;
-                iban = iban % 97;
-            }
-            //FIX ME
-            //D
-            iban = ((iban * 10) + 1) % 97;
-            iban = ((iban * 10) + 3) % 97;
-            //E
-            iban = ((iban * 10) + 1) % 97;
-            iban = ((iban * 10) + 4) % 97;
-            iban = ((iban * 10)) % 97;
-            iban = ((iban * 10)) % 97;
             int check = 98-iban;
-            System.out.println(iban);
+            System.out.println(check);
             //output
             if (check < 10) {
                 System.out.print("DE0"+check+args[0]);
@@ -67,27 +54,3 @@ public class GenComp {
         }
     }
 }
-
-
-/*//sort code - 1st input
-            double sort = Double.parseDouble(args[0]);
-            //acc nr - 2nd input
-            double acc = Double.parseDouble(args[1]);
-            for(int i = args[1].length(); i < 10; i++) {
-                System.out.println("hi");
-                acc *= 10;
-            }
-            //create checksum
-            double x = 1e10;
-            double ibase = sort * x;
-            ibase += acc;
-            //option 1
-            //ibase *= 10000;
-            //ibase += 1314;
-            //ibase *= 100;
-            //option 2
-            ibase *= 10000;
-            ibase += 2700;
-            double checksum = 98 - (ibase % 97);
-            int check = (int)checksum;
-*/
