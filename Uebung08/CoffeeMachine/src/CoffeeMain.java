@@ -7,7 +7,7 @@ public class CoffeeMain {
         int coffee = input.nextInt();
         System.out.println("Please imput desired max water container size: ");
         int water = input.nextInt();
-        CoffeeMachine a = new CoffeeMachine(coffee, water);
+        CoffeeMachine a = new CoffeeMachine(water, coffee);
         while(!exit) {
             a.printStats();
             System.out.println("1. Make coffee \n2. Clean machine \n3. Refill water \n4. Refill coffee \n5. Exit simulation");
@@ -32,7 +32,7 @@ public class CoffeeMain {
                     Thread.sleep(2000); //kind of optional but its aesthetic
                     break;
                 case 4:
-                    System.out.println("How much water would you like to add?");
+                    System.out.println("How much coffee would you like to add?");
                     int c = input.nextInt();
                     a.fillCoffee(c);
                     Thread.sleep(2000); //kind of optional but its aesthetic

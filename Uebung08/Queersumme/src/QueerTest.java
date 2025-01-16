@@ -2,7 +2,7 @@ public class QueerTest {    //somethingsomething pun on Querschnitt - I've had t
     public static void main(String[] args) throws Exception {
         NumberManipulation a = new NumberManipulation();
         switch (args.length) {
-            case 3:
+            case 3: //intentional fall through!
                 a.awwSuchAQt(Integer.parseInt(args[2]));
             case 2:
                 a.findAllM(Integer.parseInt(args[1]));
